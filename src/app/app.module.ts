@@ -19,6 +19,7 @@ import { OrderSumaryComponent } from './order-sumary/order-sumary.component';
 import { SharedModule } from './shared/shared.module';
 import { OrderModule } from './order/order.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -44,6 +45,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
 ],
   providers: [ 
+               // Alterando padrão de rotas  com cerquilha semelhante ao angular.js
+               // para ambientes onde não se tem total controle da hospedagem
+               {provide: LocationStrategy, useClass:HashLocationStrategy},
                {provide: LOCALE_ID, useValue:'pt-BR'}
              ],
   bootstrap: [AppComponent]
