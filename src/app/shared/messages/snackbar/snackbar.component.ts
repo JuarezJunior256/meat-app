@@ -30,7 +30,7 @@ import 'rxjs/add/operator/switchMap'
 })
 export class SnackbarComponent implements OnInit {
 
-  message: string //mensagem que será lançada na snackbar
+  message: string = 'Oiiii' //mensagem que será lançada na snackbar
 
   snackVisibility: string = 'hidden'
 
@@ -44,14 +44,13 @@ export class SnackbarComponent implements OnInit {
     // por um timer e o subscribe é executado quanto o timer atingir o tempo informado.
     // com switchMap, o timer anterior é desinscrito antes de definir um novo timer.
 
-    /*this.notificationService.notifier
-      .pipe(
-        tap(message => {
+    this.notificationService.notifier.do(message => {
          this.message = message
          this.snackVisibility = 'visible'
-        }),
-        switchMap(message => timer(3000))
-      ).subscribe(timer => this.snackVisibility = 'hidden')*/
+        }).switchMap(message => Observable.timer(2000))
+          .subscribe(timer => this.snackVisibility = 'hidden')
   }
+
+  
 
 }
