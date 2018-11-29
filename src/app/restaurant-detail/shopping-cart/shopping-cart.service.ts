@@ -1,9 +1,15 @@
 import { CartItem } from './cart-item.model';
+import { MenuItem } from '../menu-item/menu-item.model'
+import { Injectable } from '@angular/core';
+import { NotificationService } from '../../shared/messages/notification.service';
 
+@Injectable()
 export class ShoppingCartService{
     
     //array de itens do carrinho
     items: CartItem[] = [] 
+
+    constructor(private notificationService: NotificationService){}
 
     clear(){//metodo para limpar array
     
@@ -12,7 +18,7 @@ export class ShoppingCartService{
     }
 
     //metodo para adicionar itens no carrinho
-    addItem(item: any){
+    addItem(item: MenuItem){
      
         //variavel que procura itens 
         let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id)
@@ -24,6 +30,8 @@ export class ShoppingCartService{
           //se não encontra adiciona no array  
           this.items.push(new CartItem(item))
         }
+        //serviço de mensangem, momento que um produto é adicionado no carrinho
+        this.notificationService.notify(`Ìtem ${item.name} adicionado`)
     }
 
     increaseQty(item: CartItem){
@@ -43,6 +51,9 @@ export class ShoppingCartService{
       
         //remover item da lista
         this.items.splice(this.items.indexOf(item), 1)
+
+        //serviço de mensangem, momento que um produto é adicionado no carrinho
+        this.notificationService.notify(`Ìtem ${item.menuItem.name} removido`)
     }
 
     //metodo para totalizar os valores 

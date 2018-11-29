@@ -20,8 +20,6 @@ import { SharedModule } from './shared/shared.module';
 import { OrderModule } from './order/order.module';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,13 +37,10 @@ import { OrderModule } from './order/order.module';
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
     SharedModule.forRoot(),
-    OrderModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
-  ],
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
+],
   providers: [ 
                {provide: LOCALE_ID, useValue:'pt-BR'}
              ],
