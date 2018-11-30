@@ -47,7 +47,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
   providers: [ 
                // Alterando padrão de rotas  com cerquilha semelhante ao angular.js
                // para ambientes onde não se tem total controle da hospedagem
-               {provide: LocationStrategy, useClass:HashLocationStrategy},
+               //{provide: LocationStrategy, useClass:HashLocationStrategy},
                {provide: LOCALE_ID, useValue:'pt-BR'}
              ],
   bootstrap: [AppComponent]
