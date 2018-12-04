@@ -14,9 +14,11 @@ export class ReviewComponent implements OnInit {
   constructor(private restaurantService: RestaurantsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    
+    const id = this.route.parent.snapshot.params['id']
 
     this.reviews = this.restaurantService
-                       .reviewsOfRestaurant(this.route.parent.snapshot.params['id'])
+                       .reviewsOfRestaurant(id)
   }
 
 }

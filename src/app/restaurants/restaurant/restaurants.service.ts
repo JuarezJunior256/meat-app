@@ -28,8 +28,10 @@ export class RestaurantsService{
                        
     }
 
+    
     restaurantById(id: string): Observable<Restaurant>{
 
+        //passando id por parametro para acessar dados do restaurante em especifico
         return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`)
                         
      }

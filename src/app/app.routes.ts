@@ -11,10 +11,10 @@ export const ROUTES: Routes = [
 
     {path: ''     ,        component: HomeComponent},
   
-
     //rotas com parametros
     {path: 'restaurants/:id', component: RestaurantDetailComponent,
       children:[//rotas filhas
+           //configurar qual será a primeira rota filha, quando acessado o component 
            {path: '', redirectTo: 'menu', pathMatch:'full'},
            {path: 'menu',    component: MenuComponent},
            {path: 'reviews', component: ReviewComponent }

@@ -23,7 +23,9 @@ export class RestaurantComponent implements OnInit {
 
   constructor() { }
 
+  //primeiro metodo que será iniciado 
   ngOnInit() {
+    
   }
 
 }

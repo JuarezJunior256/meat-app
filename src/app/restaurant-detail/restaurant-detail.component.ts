@@ -15,6 +15,7 @@ export class RestaurantDetailComponent implements OnInit {
 
   ngOnInit() {
 
+    //pegando o id atraves do snapshot
     const id = this.route.snapshot.params['id'];
 
     this.restaurantService.restaurantById(id)
