@@ -4,6 +4,7 @@ import { Express } from 'express'
 import * as fs from 'fs'
 import * as https from 'https'
 import { handlerAuthentication } from './auth';
+import { handleAuthorization } from './authz';
 
 
 const server: Express = jsonServer.create()
@@ -17,8 +18,9 @@ server.use(middlewares)
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
 
+//middleware para login
 server.post('/login', handlerAuthentication)
-
+server.use('/orders', handleAuthorization)
 
 // rotas baseadas no db.json
 server.use(router)
